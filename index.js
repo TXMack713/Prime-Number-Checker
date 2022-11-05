@@ -4,7 +4,7 @@
 // Add all prime numbers between 2 and n into an array
 // Display the contents of the array to the user
 
-// let entry = prompt('Please enter a number greater than 1');
+let entry = prompt('Please enter a number greater than 1');
 let primeArray = [];
 let number = parseInt(entry);
 if (number <= 1) {
@@ -15,13 +15,14 @@ if (number <= 1) {
 } else if (number > 1) {
   for (let i = 2; i <= number; i++) {
     for (let j = 1; j < i; j++) {
-      if (i % j == 0 && j != 1 && j != number) {
-        continue;
+      if (i % j == 0 && (j !== 1 || j !== i)) {
+        break;
       } else {
-        primeArray.push(i);
+        if (i % j == 0 && (j == 1 || j == i)) primeArray.push(i);
       }
     }
   }
+
   alert(
     'Here are all the prime numbers between 2 and ' + number + ': ' + primeArray
   );
