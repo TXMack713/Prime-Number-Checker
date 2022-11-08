@@ -13,13 +13,17 @@ if (number <= 1) {
     number = parseInt(prompt('Please enter a number greater than 1'));
   }
 } else if (number > 1) {
+  // Count the number of times each number between 2 and n can be divided by all the whole numbers less than them and there be 0 remainder
+  // If there are more than 2 instances (other than 1 and the number itself), then that number is not a prime number
   for (let i = 2; i <= number; i++) {
-    for (let j = 1; j < i; j++) {
-      if (i % j == 0 && (j !== 1 || j !== i)) {
-        break;
-      } else {
-        if (i % j == 0 && (j == 1 || j == i)) primeArray.push(i);
+    let counter = 0;
+    for (let j = 1; j <= i; j++) {
+      if (i % j == 0) {
+        ++counter;
       }
+    }
+    if (counter == 2) {
+      primeArray.push(i);
     }
   }
 
